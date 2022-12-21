@@ -1,5 +1,6 @@
 peda*
 .gdb_history
 *extracted
+__pycache__
 
 localdir

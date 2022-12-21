@@ -1,1 +1,1 @@
-# CTF-Challenge-Collection
+# CTF Challenge Collection

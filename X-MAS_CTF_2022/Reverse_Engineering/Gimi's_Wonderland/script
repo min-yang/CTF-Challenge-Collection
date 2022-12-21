@@ -1,0 +1,218 @@
+function eventBus() {
+    var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
+    var w = API.getIWorld(0);
+    var tempdata = w.tempdata;
+    var eventBusName = 'SCRIPT_EVENT_BUS';
+ 
+    if(!tempdata.has(eventBusName)) {
+        var bus = {
+            _name: eventBusName,
+            _events: {}, 
+            /**
+             * Listen to an event
+             * @param {String} eventName The event to listen to
+             * @param {Function} callback The function to execute
+             * @param {String|null} name *OPTIONAL* unique name, for the ability to remove function later
+             */
+            on: function(eventName, callback, name) {
+                if(!this._events[eventName]) {
+                    this._events[eventName] = [];
+                }
+ 
+                if(name) {
+                    name = name + '_' + eventName;
+                    this.remove(eventName, name);
+                }
+ 
+                this._events[eventName].push({
+                    callback: callback,
+                    name: name
+                });
+            },
+            /**
+             * 
+             * @param {String} eventName The event to execute, this will trigger all listeners
+             * @param {Array|null} args Array of arguments to provide to all callbacks
+             */
+            emit: function(eventName, args) {
+                if(!this._events[eventName]) {
+                    return false;
+                }
+ 
+                var actions = this._events[eventName];
+                for(var i = 0; i < actions.length; i++) {
+                    actions[i].callback.apply(null, args || []);
+                }
+ 
+                return true;
+            },
+            /**
+             * 
+             * @param {String} eventName The event to remove a callback from
+             * @param {String} callbackName Name of the callback
+             */
+            remove: function(eventName, callbackName) {
+                if(!this._events[eventName]) {
+                    return false;
+                }
+                var actions = this._events[eventName];
+                for(var i = 0; i < actions.length; i++) {
+                    if(actions[i].name == callbackName) {
+                        actions.splice(i, 1);
+                        return true;
+                    }
+                }
+ 
+                return false;
+            },
+            destroy: function(){
+                tempdata.remove(this._name);
+            }
+        };
+ 
+        tempdata.put(eventBusName, bus);
+        return bus;
+    }
+    return tempdata.get(eventBusName);
+}
+
+function init(e)
+{
+    e.npc.say("Interrupt request handler online!");
+    //Lets listen to the 'playerChat' event
+    eventBus().on('playerChat', function(chatEvent, otherArgument)
+    {  
+        //e.npc.say(chatEvent.message);
+        e.npc.say("Roger");
+        var world = e.npc.getWorld();
+        var tempdata = world.tempdata;
+        tempdata.put("flag", chatEvent.message);
+        tempdata.put("rkey", 0x8f);
+    }, e.npc.UUID); //Unique ID to avoid registering same functions!
+}
+
+//个人测试部分开始
+function test(world)
+{
+    for (var i = 0; i < 8; i++)
+    {
+        world.setBlock(-291 + 4 * i, 4, 629, "minecraft:redstone_block", 0);
+        world.setBlock(-291 + 4 * i + 2, 4, 629, "minecraft:redstone_block", 0);
+
+    }
+
+    for(var k=0; k<1; k++)
+    {
+        world.setBlock(-291 + 4 * k, 4, 629, "minecraft:redstone_block", 0);
+        world.setBlock(-291 + 4 * k + 2, 4, 629, "minecraft:wool", 14);
+    }
+}
+//个人测试部分结束
+
+function to_bits(world, x, mode)
+{
+    var offset = 0;
+    if (mode != 0)
+    {
+        offset = 2;
+    }
+    
+    else
+    {
+        var tempdata = world.tempdata;
+        var old_rkey = tempdata.get("rkey");
+        tempdata.put("rkey", (x + old_rkey) & 0xFF);
+        //print("Setting rkey " + ((x + old_rkey) & 0xFF));
+    }
+    
+    for (var i = 0; i < 8; i++)
+    {
+        if (x & (1<<i))
+        {
+            world.setBlock(-291 + 4 * i + offset, 4, 629, "minecraft:redstone_block", 0);
+        }
+        else
+        {
+            world.setBlock(-291 + 4 * i + offset, 4, 629, "minecraft:wool", 14);
+        }
+    }
+}
+
+function from_bits(world)
+{
+    var xstart = -311;
+    var tempdata = world.tempdata;
+    var dict = {
+    36: 'A',
+    206: 'C',
+    236: 'G',
+    246: 'T'
+    }
+    
+    if (tempdata.has("encflag"))
+    {
+        for(var i = 0; i < 4; i++)
+        {
+            var num = 0;
+            for(var j = 0; j < 7; j++)
+            {
+                var x = xstart + 20 * i + 2 * j;
+                var bl = world.getBlock(x, 4, 691).getName();
+                if(bl == "minecraft:lit_redstone_lamp")
+                {
+                    num = num + 1;
+                }
+                num = num << 1;
+            }
+            tempdata.put("encflag", tempdata.get("encflag") + dict[num]);
+        }
+    }
+    
+    else
+    {
+        tempdata.put("encflag", "");
+    }
+}
+
+function tick(event)
+{
+    var world = event.npc.getWorld();
+    var tempdata = world.tempdata;
+    
+    if(((world.getTime() / 10) >> 0 )% 5 != 0)
+    {
+        return;
+    }
+    
+    if (tempdata.has("flag"))
+    {
+        from_bits(world);
+        var flag = tempdata.get("flag");
+        if (flag.length == 0)
+        {
+            event.npc.say("Your champion gene is: " + tempdata.get("encflag"));
+            if(tempdata.get("encflag") != "GACGCCTGACCCTTATATGGCGTATCCTTGAGCGGCCCCTAAGATCCCTCAGGGGTTTACGCGGAGACCTCTCAAAGGGTGGTGGCCCCTCAGCGAAGATCGAGTGGCAGCTGTCATGACGATTCATAGGATCCAGACTAGGCCATGA")
+            {
+                event.npc.say("Unfortunately, that's not what i'm looking for!");
+            }
+            else
+            {
+                event.npc.say("Thanks, you found it!");
+            }
+            
+            print(tempdata.get("encflag"));
+            tempdata.remove("flag");
+            tempdata.remove("encflag");
+        }
+        
+        else
+        {
+            var num = flag.charCodeAt(0);
+            var chr = flag.substr(0, 1);
+            to_bits(world, tempdata.get("rkey"), 1);
+            to_bits(world, num, 0);
+            event.npc.say("Processing " + chr);
+            tempdata.put("flag", flag.substr(1));
+        }
+    }
+}

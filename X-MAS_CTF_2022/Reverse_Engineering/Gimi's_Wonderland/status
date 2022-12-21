@@ -1,0 +1,20 @@
+输入
+x: 不通
+-: 通
+
+输出
+x: minecraft:redstone_lamp
+-: minecraft:lit_redstone_lamp
+
+输入：xx xx xx xx
+输出：--x---- --x---- --x---- --x----
+
+输入：x- x- x- x-
+输出：---xx-- ---xx-- x-xx-xx x-xx-xx
+
+输入：-x -x -x -x
+输出：x-xx-xx x-xx-xx ---xx-- ---xx--
+
+输入：-- -- -- --
+输出：x--x--- x--x--- x--x--- x--x---
+
