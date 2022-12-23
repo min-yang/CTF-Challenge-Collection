@@ -1,4 +1,4 @@
-# Description
+# 题目描述
 
 As you already know, Santa is a math fanatic. This year he spent his summer studying interesting polynomial equations. He found a very difficult problem and he solved it with some clever maths. Now he proposes the same problem for you to solve:
 
@@ -12,7 +12,7 @@ Find two polynomials f and g such that equation (1) holds for at least V points.
 
 Note: for every point in the set of points that hold for equation (1), g(x) is invertible.
 
-# Example
+# 示例
 
 ```sh
 nc challs.htsp.ro 10000

@@ -1,4 +1,4 @@
-# Description
+# 题目描述
 
 The old elves decided to play a game of words.
 
@@ -20,7 +20,7 @@ What's the maximum length of an "original" word?
 
 The sum of the lengths of all words <= 10.000
 
-# Example
+# 示例
 
 ```sh
 nc challs.htsp.ro 14003

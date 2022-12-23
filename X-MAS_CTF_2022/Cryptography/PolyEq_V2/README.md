@@ -1,4 +1,4 @@
-# Description
+# 题目描述
 
 As you already know, Santa is a math fanatic. This year he spent his summer studying interesting polynomial equations. He found a very difficult problem and he solved it with some clever maths. Now he proposes the same problem for you to solve:
 
@@ -14,6 +14,6 @@ Note: for every point in the set of points that hold for equation (1), g(x) is i
 
 Note: A small change has been made that makes an unintended solution not work anymore.
 
-# Example
+# 示例
 
 [ref](https://github.com/min-yang/CTF-Challenge-Collection/tree/main/X-MAS_CTF_2022/Cryptography/PolyEq#example)

@@ -1,4 +1,4 @@
-# Description
+# 题目描述
 
 Santa's elves managed to find during their break a forgotten cellar. Upon entering it, they found that the cellar is full of the best drinks the world has to offer, stored in a barrel. There are N elves in total, and fortunately for them, there are also N barrels in total.
 
@@ -37,7 +37,7 @@ P, Q <= 10^9
 v1, v2, a, b, c, max(V) <= d <= 10^9
 ```
 
-# Example
+# 示例
 
 ```sh
 nc challs.htsp.ro 14000

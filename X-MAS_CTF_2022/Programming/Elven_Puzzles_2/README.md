@@ -1,4 +1,4 @@
-# Descrption
+# 题目描述
 
 This is a continuation of the task Elven Puzzles 1.
 
@@ -41,7 +41,7 @@ Answer:4284
 n <= 1.000 & m <= 25.000
 ```
 
-# Example
+# 示例
 
 ```sh
 nc challs.htsp.ro 14002

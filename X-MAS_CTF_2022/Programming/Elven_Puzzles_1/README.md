@@ -1,4 +1,4 @@
-# Description
+# 题目描述
 
 The elves have stumbled upon an interesting puzzle game. The puzzle is very similar to a Rubik's cube but in 2D, a matrix A of N*N numbers which contains numbers form 1 to N*N.
 
@@ -32,7 +32,7 @@ n = 10
 
 **Answer**: 5
 
-# Solution
+# 解决方案
 
 连上服务器后，服务器会依次给15个矩阵，我们需要解出每个矩阵需要移动多少次才能复原，移动规则跟魔方类似，每一行只能左右移动，每一列只能上下移动；此外，改题还有时间限制，必须在105秒内解决15个挑战，后面几个矩阵会比较大，最大的矩阵为2000\*2000，因此需要优化解决的算法，不然时间会不够。
 
