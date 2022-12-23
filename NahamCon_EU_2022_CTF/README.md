@@ -1,3 +1,14 @@
+# 已有解决方案
+
+自己解决：
+
+1. [Byepass](Web/Byepass/README.md)
+2. [Use After Exit](Web/Use_After_Exit/README.md)
+
+他人提供：
+
+1. [Dirty Bird 2](Web/Dirty_Bird_2/README.md)
+
 # 参考资料
 
 比赛主办方提供的参考资料如下：
