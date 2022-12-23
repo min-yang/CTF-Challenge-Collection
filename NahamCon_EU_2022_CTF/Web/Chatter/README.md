@@ -6,4 +6,4 @@ You will need to configure this endpoint in the app (without the trailing /)
 
 # 题目附件
 
-1. [chatter.AppImage](https://github.com/min-yang/CTF-Challenge-Collection/releases/download/file/chatter.AppImage)
+1. [chatter.AppImage](https://pan.baidu.com/s/1kWI2hHnOnxROEs4XSdpCsA?pwd=848m)
