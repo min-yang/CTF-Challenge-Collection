@@ -2,13 +2,13 @@
 
 自己解决：
 
-1. [Byepass](Web/Byepass/README.md)
-2. [Use After Exit](Web/Use_After_Exit/README.md)
-3. [padlock](Reverse_Engineering/padlock/README.md)
+1. [Byepass](Web/Byepass)
+2. [Use After Exit](Web/Use_After_Exit)
+3. [padlock](Reverse_Engineering/padlock)
 
 他人提供：
 
-1. [Dirty Bird 2](Web/Dirty_Bird_2/README.md)
+1. [Dirty Bird 2](Web/Dirty_Bird_2)
 
 # 参考资料
 
