@@ -17,3 +17,4 @@
 8. [The Carol Corruptor](Cryptography/The_Carol_Corruptor)
 9. [Krampus' Bet](Misc/Krampus'_Bet)
 10. [Manipulated Christmas](Misc/Manipulated_Christmas)
+11. [Elf Resources](Web_Exploitation/Elf_Resources)
