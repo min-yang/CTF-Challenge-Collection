@@ -12,7 +12,8 @@
 
 1. [Dirty Bird 2](Web/Dirty_Bird_2)
 2. [rektcursion](Cryptography/rektcursion)
-3. [The_Space_Between_Us](Miscellaneous/The_Space_Between_Us)
+3. [The Space Between Us](Miscellaneous/The_Space_Between_Us)
+4. [Math Smasher](Scripting/Math_Smasher)
 
 # 参考资料
 
