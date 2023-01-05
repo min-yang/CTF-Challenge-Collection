@@ -5,10 +5,14 @@
 1. [Byepass](Web/Byepass)
 2. [Use After Exit](Web/Use_After_Exit)
 3. [padlock](Reverse_Engineering/padlock)
+4. [Shapeshifter](Cryptography/Shapeshifter)
+5. [dont_hack_my_d](Cryptography/dont_hack_my_d)
 
 他人提供：
 
 1. [Dirty Bird 2](Web/Dirty_Bird_2)
+2. [rektcursion](Cryptography/rektcursion)
+3. [The_Space_Between_Us](Miscellaneous/The_Space_Between_Us)
 
 # 参考资料
 
