@@ -15,6 +15,7 @@
 2. [rektcursion](Cryptography/rektcursion)
 3. [The Space Between Us](Miscellaneous/The_Space_Between_Us)
 4. [Math Smasher](Scripting/Math_Smasher)
+5. [Welcome](Web3/Welcome)
 
 # 参考资料
 
