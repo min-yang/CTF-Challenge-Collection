@@ -8,6 +8,7 @@
 4. [Shapeshifter](Cryptography/Shapeshifter)
 5. [dont_hack_my_d](Cryptography/dont_hack_my_d)
 6. [Got Any Games](Mobile/Got_Any_Games)
+7. [rick](Reverse_Engineering/rick)
 
 他人提供：
 
