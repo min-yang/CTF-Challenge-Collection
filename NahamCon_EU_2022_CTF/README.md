@@ -16,6 +16,8 @@
 3. [The Space Between Us](Miscellaneous/The_Space_Between_Us)
 4. [Math Smasher](Scripting/Math_Smasher)
 5. [Welcome](Web3/Welcome)
+6. [Limited Resources](Binary_Exploitation/Limited_Resources)
+7. [Go Jargon Go](Reverse_Engineering/Go_Jargon_Go)
 
 # 参考资料
 
