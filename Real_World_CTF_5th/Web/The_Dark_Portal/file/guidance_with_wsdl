@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://rwctf2023.rw.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="GuidanceServiceImplService" targetNamespace="http://rwctf2023.rw.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://rwctf2023.rw.com/" elementFormDefault="unqualified" targetNamespace="http://rwctf2023.rw.com/" version="1.0">
+
+  <xs:element name="showMe" type="tns:showMe"/>
+
+  <xs:element name="showMeResponse" type="tns:showMeResponse"/>
+
+  <xs:complexType name="showMe">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="showMeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="showMe">
+    <wsdl:part element="tns:showMe" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="showMeResponse">
+    <wsdl:part element="tns:showMeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GuidanceService">
+    <wsdl:operation name="showMe">
+      <wsdl:input message="tns:showMe" name="showMe">
+    </wsdl:input>
+      <wsdl:output message="tns:showMeResponse" name="showMeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GuidanceServiceImplServiceSoapBinding" type="tns:GuidanceService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="showMe">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="showMe">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="showMeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GuidanceServiceImplService">
+    <wsdl:port binding="tns:GuidanceServiceImplServiceSoapBinding" name="GuidanceServiceImplPort">
+      <soap:address location="http://198.11.177.96:40000/services/guidance"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
