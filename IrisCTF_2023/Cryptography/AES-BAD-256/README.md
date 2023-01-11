@@ -97,3 +97,8 @@ flag: 'flag{yangmin}\n\n\n', if right input any character, if not, input nothing
 |   15   | |  |  |  |  |  |  |  |  |  |  |                           | U |  |  |  |
 
 可以看到，只有12列的值被修改，msg专用字符被修改不会有影响，此外，12列其它行不在json的解析范围内，修改了不影响解析，13列、14列和15列同理。
+
+参考链接：
+
+- https://github.com/Seraphin-/ctf/blob/master/irisctf2023/aes-bad-256.md
+- https://github.com/danlliu/irisctf-writeups/blob/main/aes-bad.md
