@@ -24,9 +24,7 @@ def encrypt(inp):
     for block in range(0, len(inp), MODE_BLOCK_SIZE):
         for i in range(AES_BLOCK_SIZE):
             data += bytes(inp[block+j*AES_BLOCK_SIZE+PERMUTATION[i]] for j in range(MODE_BLOCK_SIZE // AES_BLOCK_SIZE))
-    print(PERMUTATION)
-    print(inp.hex())
-    print(data.hex())
+    
     return AES.encrypt(data)
 
 def decrypt(inp):

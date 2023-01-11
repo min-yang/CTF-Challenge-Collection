@@ -2,10 +2,10 @@ from random import sample
 
 from pwn import *
 
-context.log_level = 'DEBUG'
+#context.log_level = 'DEBUG'
 
-#p = process(['python3', '../file/chal.py'])
-p = remote('aes.chal.irisc.tf', '10100')
+p = process(['python3', '../file/chal.py'])
+#p = remote('aes.chal.irisc.tf', '10100')
 
 p.recvuntil(b'> ')
 p.sendline(b'1')
@@ -39,7 +39,7 @@ def search_flag(orign_data, n_block):
             tmp_type = run_command(new_data.encode())
             if tmp_type and tmp_type[key] == mapping[key][1]:
                 print('flag hit:', repr(tmp_type))
-                input('continue?')
+                #input('continue?')
                 return new_data
     raise ValueError('can not find flag')
 
@@ -53,7 +53,7 @@ for key in mapping:
         data_type = run_command(new_data.encode())
         if data_type and data_type[key] != mapping[key][0]:
             hit = True
-            print('block offset: %s, hit: %s' %(n_block, repr(data_type)))
+            print('block offset: %s, hit %s: %s' %(n_block, key, repr(data_type)))
             new_data = search_flag(orign_data, n_block)
             orign_data = new_data
             break
