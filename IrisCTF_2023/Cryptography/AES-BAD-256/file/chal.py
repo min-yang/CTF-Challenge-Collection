@@ -1,6 +1,7 @@
 from Crypto.Cipher import AES as AES_BLOCK
 import secrets
 import random
+import logging
 
 AES_BLOCK_SIZE = 16
 MODE_BLOCK_SIZE = AES_BLOCK_SIZE * 16
@@ -23,7 +24,9 @@ def encrypt(inp):
     for block in range(0, len(inp), MODE_BLOCK_SIZE):
         for i in range(AES_BLOCK_SIZE):
             data += bytes(inp[block+j*AES_BLOCK_SIZE+PERMUTATION[i]] for j in range(MODE_BLOCK_SIZE // AES_BLOCK_SIZE))
-    
+    print(PERMUTATION)
+    print(inp.hex())
+    print(data.hex())
     return AES.encrypt(data)
 
 def decrypt(inp):
@@ -35,7 +38,7 @@ def decrypt(inp):
         for j in range(MODE_BLOCK_SIZE // AES_BLOCK_SIZE):
             for i in range(AES_BLOCK_SIZE):
                 data += bytes([inp[block + PERMUTATION.index(i) * (MODE_BLOCK_SIZE // AES_BLOCK_SIZE) + j]])
-  
+    
     return data
 
 import json
@@ -53,6 +56,7 @@ def run_command(inp):
     
     # Show me what you got
     command = inp[2:length+2].decode("ascii", errors="replace")
+
     try:
         command = json.loads(command, strict=False)
     except Exception as e:
@@ -96,6 +100,5 @@ def main():
                 print("Bye!")
                 exit(0)
                 
-
 if __name__ == "__main__":
     main()
