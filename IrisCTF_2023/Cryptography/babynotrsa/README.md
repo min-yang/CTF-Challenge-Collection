@@ -4,7 +4,7 @@ Everyone knows [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)), but ever
 
 # 解决方案
 
-参考[模乘法逆元](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse)，$flag = encrypted * e^-1 mod n$，具体参考脚本[solve.py](solution/solve.py)。
+参考[模乘法逆元](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse)，`flag = encrypted * e^-1 mod n`，具体参考脚本[solve.py](solution/solve.py)。
 
 如果使用sage，可以使用如下脚本：
 
