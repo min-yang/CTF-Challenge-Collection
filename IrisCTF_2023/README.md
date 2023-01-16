@@ -21,3 +21,7 @@
 8. [Host Issues](Miscellaneous/Host_Issues)
 9. [Nameless](Miscellaneous/Nameless)
 10. [Example Jail](Miscellaneous/Example_Jail)
+11. [babycsrf](Web_Exploitation/babycsrf)
+12. [Feeling Tagged](Web_Exploitation/Feeling_Tagged)
+13. [metacalc](Web_Exploitation/metacalc)
+14. [mokerview](Web_Exploitation/mokerview)
