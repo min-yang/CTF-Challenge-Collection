@@ -1,6 +1,6 @@
 # [idekCTF 2022](https://ctf.idek.team/)
 
-# Writeup
+## Writeup
 
 参考他人：
 
