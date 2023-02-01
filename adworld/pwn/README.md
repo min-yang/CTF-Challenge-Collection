@@ -19,3 +19,7 @@
 - [反应釜开关控制](反应釜开关控制)：缓冲区溢出直接控制流程
 - [pwn-200](pwn-200)：缓冲区溢出，先构造ROP泄漏libc函数的地址，然后借助LibSearcher推测可能使用的libc，借此算出基址，然后构造ROP运行shell
 - [实时数据监测](实时数据监测)：利用格式化字符串漏洞进行任意写，由于要写的值比较大，因此构造起来稍微复杂一点
+- [welpwn](welpwn)：缓冲区溢出利用，需要使用LibcSearcher寻找匹配的libc库，尝试使用DynELF报错，原因未知
+- [time_formatter](time_formatter)：UAF利用，有待进一步学习，尤其是要清楚哪些函数会分配堆
+- [Recho](Recho)：缓冲区溢出利用，但是只有断开后函数才会返回，因此无法getshell且无法泄漏libc的基址，要构造一次性的ROP，借助alarm中的syscall完成
+- [greeting-150](greeting-150)：格式化字符串漏洞，构造比较复杂，劫持strlen的GOT地址，此外还需要修改fini_array的值避免程序结束
