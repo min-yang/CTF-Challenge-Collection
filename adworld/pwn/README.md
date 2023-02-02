@@ -23,3 +23,6 @@
 - [time_formatter](time_formatter)：UAF利用，有待进一步学习，尤其是要清楚哪些函数会分配堆
 - [Recho](Recho)：缓冲区溢出利用，但是只有断开后函数才会返回，因此无法getshell且无法泄漏libc的基址，要构造一次性的ROP，借助alarm中的syscall完成
 - [greeting-150](greeting-150)：格式化字符串漏洞，构造比较复杂，劫持strlen的GOT地址，此外还需要修改fini_array的值避免程序结束
+- [note-service2](note-service2)：堆分配机制考察，此外还考察指令构造能力，每个chunk只能写7个字节，在这个限制下构造shellcode
+- [secret_file](secret_file)：缓冲区溢出利用，但解决问题的主要靠的是逆向能力
+
