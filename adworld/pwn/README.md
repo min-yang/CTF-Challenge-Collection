@@ -25,4 +25,4 @@
 - [greeting-150](greeting-150)：格式化字符串漏洞，构造比较复杂，劫持strlen的GOT地址，此外还需要修改fini_array的值避免程序结束
 - [note-service2](note-service2)：堆分配机制考察，此外还考察指令构造能力，每个chunk只能写7个字节，在这个限制下构造shellcode
 - [secret_file](secret_file)：缓冲区溢出利用，但解决问题的主要靠的是逆向能力
-
+- [supermarket](supermarket)：堆利用机制考察，目前的方案仅适用于Tcache机制之前的环境，Tcache环境下如何攻击还有待研究
