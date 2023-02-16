@@ -26,3 +26,8 @@
 - [note-service2](note-service2)：堆分配机制考察，此外还考察指令构造能力，每个chunk只能写7个字节，在这个限制下构造shellcode
 - [secret_file](secret_file)：缓冲区溢出利用，但解决问题的主要靠的是逆向能力
 - [supermarket](supermarket)：堆利用机制考察，目前的方案仅适用于Tcache机制之前的环境，Tcache环境下如何攻击还有待研究
+- [4-ReeHY-main-100](4-ReeHY-main-100)：利用堆的unlink机制改写任意内存，目标程序没有将free的指针置0，给了攻击者机会
+- [pwnstack](pwnstack)：非常基本的栈溢出题，但是如何在libc2.35版本下成功利用有待研究
+- [babyfengshui](babyfengshui)：堆溢出利用，但是有个检查机制需要绕过，存在Tcache和不存在Tcache时需要使用不同的方法，两种方法目前都开发出来了
+- [Noleak](Noleak)：堆溢出利用，但是没有地方泄露数据，所以要精心构造在不知道堆栈和libc基址的情况下执行shellcode的方法，目前仅有libc2.23的方法，如何在2.35下成功攻击有待研究
+- [1000levevls](1000levevls)：栈溢出利用，但是开启了PIE，且无法泄露地址，因此需要想办法通过运算在栈中构造出one_gadget地址，此外，偏移量需要填充vsyscall指令，因为vsyscall指令地址是不会变化的，即使开了PIE，如果不支持vsyscall，该方法无法成功
