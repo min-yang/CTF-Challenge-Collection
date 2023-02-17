@@ -31,3 +31,7 @@
 - [babyfengshui](babyfengshui)：堆溢出利用，但是有个检查机制需要绕过，存在Tcache和不存在Tcache时需要使用不同的方法，两种方法目前都开发出来了
 - [Noleak](Noleak)：堆溢出利用，但是没有地方泄露数据，所以要精心构造在不知道堆栈和libc基址的情况下执行shellcode的方法，目前仅有libc2.23的方法，如何在2.35下成功攻击有待研究
 - [1000levevls](1000levevls)：栈溢出利用，但是开启了PIE，且无法泄露地址，因此需要想办法通过运算在栈中构造出one_gadget地址，此外，偏移量需要填充vsyscall指令，因为vsyscall指令地址是不会变化的，即使开了PIE，如果不支持vsyscall，该方法无法成功
+- [hacknote](hacknote)：UAF利用，注意print note的逻辑，函数指针的值会作为函数的参数，前4个字节不可控，后四个字节补`||sh`即可成功利用
+- [format2](format2)：栈溢出问题，但是只能覆盖ebp的值，无法覆盖返回地址，通过将ebp改为我们控制区域的首地址，那么下一次函数返回地址就是首地址+4处的值
+- [dubblesort](dubblesort)：栈溢出利用，首先需要读栈中残留的数据泄露libc，其次要想办法绕过canary防护
+- [echo_back](echo_back)：格式化字符串漏洞，但是只能写7个字节，需要精心构造攻击方法，需要了解linux内核机制，这里是通过改写stdin结构体来完成攻击
