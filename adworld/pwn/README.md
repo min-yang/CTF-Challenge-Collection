@@ -36,3 +36,5 @@
 - [dubblesort](dubblesort)：栈溢出利用，首先需要读栈中残留的数据泄露libc，其次要想办法绕过canary防护
 - [echo_back](echo_back)：格式化字符串漏洞，但是只能写7个字节，需要精心构造攻击方法，需要了解linux内核机制，这里是通过改写stdin结构体来完成攻击
 - [EasyPwn](EasyPwn): 格式化字符串漏洞，但是涉及snprintf函数format参数的动态覆盖，原理尚不清楚，需要进一步研究
+- [repeater](repeater)：栈溢出利用，但溢出范围刚好覆盖返回地址，因此需要提前布局shellcode
+- [RCalc](RCalc)：利用堆溢出绕过作者自己实现的canary检测

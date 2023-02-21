@@ -6,7 +6,7 @@ elf = context.binary = ELF('../file/pwn1')
 # p = process('../file/pwn1')
 # libc = ELF('/usr/lib/x86_64-linux-gnu/libc.so.6')
 
-p = remote('61.147.171.105', '59803')
+p = remote('61.147.171.105', '50073')
 libc = ELF('../file/libc.so.6')
 
 p.sendlineafter(b'Code:\n', b'2')

