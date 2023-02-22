@@ -3,5 +3,6 @@ peda*
 *extracted
 __pycache__
 *.apk.cache
+core
 
 localdir
