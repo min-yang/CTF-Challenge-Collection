@@ -5,6 +5,7 @@ from flask_mysqldb import MySQL
 mysql = MySQL()
 
 def query(query, args=(), one=False):
+    print(query)
     cursor = mysql.connection.cursor()
     cursor.execute(query, args)
     rv = [dict((cursor.description[idx][0], value)
