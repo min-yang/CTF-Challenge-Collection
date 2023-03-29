@@ -1,0 +1,2 @@
+connect to port 9034 (nc 0 9034). the 'loveletter' binary will be executed under loveletter_pwn privilege.
+pwn it and get a shell and read the flag.
