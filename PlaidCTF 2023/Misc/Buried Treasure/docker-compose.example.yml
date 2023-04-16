@@ -1,0 +1,50 @@
+version: '2'
+services:
+  ghidra:
+    build:
+      context: ./ghidra/
+
+  binja:
+    build:
+      context: ./binja/
+      args:
+        BN_LICENSE_SERIAL: ""
+    environment:
+      BN_LICENSE: |-
+        license here
+
+  main1:
+    build:
+      context: .
+    environment:
+      LEVEL: 1
+      GHIDRA_URL: "http://ghidra:5000/"
+      BINJA_URL: "http://binja:5001/"
+    ports:
+      - 1337:1337
+    links:
+      - "ghidra:ghidra"
+      - "binja:binja"
+    volumes:
+      - type: bind
+        source: /path/to/flag1.txt
+        target: /chall/flag.txt
+    privileged: true
+
+  main2:
+    build:
+      context: .
+    environment:
+      LEVEL: 2
+      GHIDRA_URL: "http://ghidra:5000/"
+      BINJA_URL: "http://binja:5001/"
+    ports:
+      - 1338:1337
+    links:
+      - "ghidra:ghidra"
+      - "binja:binja"
+    volumes:
+      - type: bind
+        source: /path/to/flag2.txt
+        target: /chall/flag.txt
+    privileged: true

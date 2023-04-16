@@ -1,0 +1,121 @@
+
+<html color-mode="user">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/x-icon" href="/static/icon.webp">
+  <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css">
+  <script src="/static/wasm_exec.js"></script>
+  <script>
+    const go = new Go();
+    WebAssembly.instantiateStreaming(
+      fetch("/static/transfer.wasm"),
+      go.importObject
+    ).then((result) => {
+      go.run(result.instance);
+    });
+  </script>
+</head>
+
+<body>
+  <main>
+    <section>
+      <img src="/static/icon.webp"
+        style="vertical-align: middle; height: 10em; filter: drop-shadow(2px 2px 2px #0a0a0a);" />
+      <h1>
+        <div>Kraken <br /><small>Like The Pirate Bay
+            but for NFTs</small></div>
+      </h1>
+      <hr>
+      <h2>Public Gallery</h2>
+      
+      <header>
+        <h3>Parrot Collection</h3>
+      </header>
+      
+      <aside id="Parrot_2190"
+        onclick="asyncGetFile(Parrot_2190_result, '/public/Parrot/2190.jpg')">
+        <section>
+          <div id="Parrot_2190_result"><strong>Click To
+              Reveal<br /><small>2190</small></strong>
+          </div>
+        </section>
+      </aside>
+      
+      <aside id="Parrot_6499"
+        onclick="asyncGetFile(Parrot_6499_result, '/public/Parrot/6499.jpg')">
+        <section>
+          <div id="Parrot_6499_result"><strong>Click To
+              Reveal<br /><small>6499</small></strong>
+          </div>
+        </section>
+      </aside>
+      
+      <aside id="Parrot_7998"
+        onclick="asyncGetFile(Parrot_7998_result, '/public/Parrot/7998.jpg')">
+        <section>
+          <div id="Parrot_7998_result"><strong>Click To
+              Reveal<br /><small>7998</small></strong>
+          </div>
+        </section>
+      </aside>
+      
+      <aside id="Parrot_0329"
+        onclick="asyncGetFile(Parrot_0329_result, '/public/Parrot/0329.jpg')">
+        <section>
+          <div id="Parrot_0329_result"><strong>Click To
+              Reveal<br /><small>0329</small></strong>
+          </div>
+        </section>
+      </aside>
+      
+      <aside id="Parrot_9076"
+        onclick="asyncGetFile(Parrot_9076_result, '/public/Parrot/9076.jpg')">
+        <section>
+          <div id="Parrot_9076_result"><strong>Click To
+              Reveal<br /><small>9076</small></strong>
+          </div>
+        </section>
+      </aside>
+      
+      
+    </section>
+    <hr>
+    <section>
+      <h2>Private Gallery</h2>
+      
+      <header>
+        <h3>Flag Collection</h3>
+      </header>
+      
+      <aside id="Flag_flag"
+        onclick="asyncGetFile(Flag_flag_result, '/private/Flag/flag.jpg')">
+        <section>
+          <div id="Flag_flag_result"><strong>Restricted<br /><small>flag</small></strong>
+          </div>
+        </section>
+      </aside>
+      
+      
+    </section>
+    <hr>
+  </main>
+</body>
+<script>
+  var asyncGetFile = async function (card, filename) {
+    if (card.getElementsByTagName('img').length > 0) {
+      return
+    }
+
+    document.body.style.cursor = 'wait'
+    try {
+      card.innerHTML = await getFile(filename, window.location.host);
+    } catch (err) {
+      console.error("Go Error", err);
+      card.innerHTML = "<small style='color: red'>" + err + "</small>";
+    }
+    document.body.style.cursor = 'default'
+  };
+</script>
+
+</html>

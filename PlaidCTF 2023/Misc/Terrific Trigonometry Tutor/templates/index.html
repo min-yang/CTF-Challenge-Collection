@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Terrific Trigonometry Tutor</title>
+    <link rel="icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/pico.min.css">
+    <link rel="stylesheet" href="/static/katex.min.css">
+    <script defer src="/static/katex.min.js"></script>
+  </head>
+
+  <body>
+    <main class="container">
+      <h1>Terrific Trigonometry Tutor</h1>
+
+      <form>
+        <div class="grid">
+          <button type="button" onclick="example_1()">Example 1</button>
+          <button type="button" onclick="example_2()">Example 2</button>
+          <button type="button" onclick="example_3()">Example 3</button>
+        </div>
+      </form>
+
+      <section>
+        <article>
+          <div class="container">
+            <center>
+              <div id="result">
+                <br><br><br>
+              </div>
+            </center>
+            <hr>
+            Stack: <span id="stack">empty</span>
+          </div>
+        </article>
+      </section>
+
+      <form>
+        <div class="grid">
+          <button type="button" name="clear" value="clear" onclick="buttonclear()">Clear</button>
+          <button type="button" name="backspace" value="backspace" onclick="buttonbackspace()">&#x232B;</button>
+        </div>
+        <div class="grid">
+          <input type="text" name="varname" placeholder="Variable" oninput="validatevarname(false)" onkeypress="keypress_varname(event)">
+          <button type="button" onclick="button_var()">Variable</button>
+          <input type="text" name="number" placeholder="Number" oninput="validatenumber(false)" onkeypress="keypress_number(event)">
+          <button type="button" onclick="button_num()">Number</button>
+        </div>
+        <div class="grid">
+          <button type="button" name="operator" value="add" onclick="buttonop('add')">+</button>
+          <button type="button" name="operator" value="subtract" onclick="buttonop('sub')">-</button>
+          <button type="button" name="operator" value="multiply" onclick="buttonop('mul')">&times;</button>
+          <button type="button" name="operator" value="divide" onclick="buttonop('div')">&divide;</button>
+          <button type="button" name="operator" value="power" onclick="buttonop('pow')">a<sup>b</sup></button>
+        </div>
+        <div class="grid">
+          <button type="button" name="function" value="sin" onclick="buttonop('sin')">sin</button>
+          <button type="button" name="function" value="cos" onclick="buttonop('cos')">cos</button>
+          <button type="button" name="function" value="tan" onclick="buttonop('tan')">tan</button>
+          <button type="button" name="function" value="csc" onclick="buttonop('csc')">csc</button>
+          <button type="button" name="function" value="sec" onclick="buttonop('sec')">sec</button>
+          <button type="button" name="function" value="cot" onclick="buttonop('cot')">cot</button>
+        </div>
+        <div class="grid">
+          <button type="button" name="function" value="asin" onclick="buttonop('asin')">asin</button>
+          <button type="button" name="function" value="acos" onclick="buttonop('acos')">acos</button>
+          <button type="button" name="function" value="atan" onclick="buttonop('atan')">atan</button>
+          <button type="button" name="function" value="acsc" onclick="buttonop('acsc')">acsc</button>
+          <button type="button" name="function" value="asec" onclick="buttonop('asec')">asec</button>
+          <button type="button" name="function" value="acot" onclick="buttonop('acot')">acot</button>
+        </div>
+      </form>
+
+      <p>© 2023 &pi;rates</p>
+    </main>
+
+    <script>
+      var stack = [];
+      
+      function show_result(text) {
+          if (text == "") {
+              document.getElementById("result").innerHTML = "<br><br><br>";
+          } else {
+              katex.render(text, document.getElementById("result"), {
+                  throwOnError: false
+              });
+          }
+      }
+
+      function show_stack() {
+          if (stack.length == 0) {
+              document.getElementById("stack").innerHTML = "empty";              
+          } else {
+              document.getElementById("stack").innerHTML = stack.map(x => x[0] + "(" + x[1] + ")").join(" ; ");
+          }
+      }
+
+      function compute_result() {
+          if (stack.length == 0) {
+              show_result("");
+              return;
+          }
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "/compute", true);
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.onload = function() {
+              if (xhr.status == 200) {
+                  if (xhr.responseText != "invalid expression") {
+                      show_result(xhr.responseText);
+                  }
+              } else {
+                  console.log("Error: " + xhr.status);
+              }
+          };
+          xhr.send(JSON.stringify(stack));          
+      }
+
+      function buttonclear() {
+          stack = [];
+          show_stack();
+          compute_result();
+      }
+
+      function buttonbackspace() {
+          if (stack.length > 0) {
+              stack.pop();
+              show_stack();
+              compute_result();
+          }
+      }
+
+      function validatevarname(expected_nonempty) {
+          let varname = document.forms[1].varname;
+          let valid = /^[a-zA-Z][a-zA-Z0-9_]*$/.test(varname.value);
+          if (expected_nonempty && varname.value == "") {
+              valid = false;
+          } else if (!expected_nonempty && varname.value == "") {
+              valid = true;
+          }
+          if (valid) {
+              varname.removeAttribute("aria-invalid");
+          } else {
+              varname.setAttribute("aria-invalid", "true");
+          }
+          return valid;
+      }
+
+      function validatenumber(expected_nonempty) {
+          let number = document.forms[1].number;
+          let valid = /^-?[0-9]+(\.[0-9]+)?$/.test(number.value);
+          if (expected_nonempty && number.value == "") {
+              valid = false;
+          } else if (!expected_nonempty && number.value == "") {
+              valid = true;
+          }
+          if (valid) {
+              number.removeAttribute("aria-invalid");
+          } else {
+              number.setAttribute("aria-invalid", "true");
+          }
+          return valid;
+      }
+
+      function button_var() {
+          let varname = document.getElementsByName("varname")[0].value;
+          if (validatevarname(true)) {
+              stack.push(["var", varname]);
+              show_stack();
+              compute_result();
+          }
+      }
+
+      function button_num() {
+          let number = document.getElementsByName("number")[0].value;
+          if (validatenumber(true)) {
+              stack.push(["num", number]);
+              show_stack();
+              compute_result();
+          }          
+      }
+
+      function buttonop(op) {
+          stack.push(["op", op]);
+          show_stack();
+          compute_result();
+      }
+
+      function keypress_varname(event) {
+          if (event.key == "Enter") {
+              button_var();
+          }
+      }
+      function keypress_number(event) {
+          if (event.key == "Enter") {
+              button_num();
+          }
+      }
+
+      function example_1() {
+          // sin(x)^2 + cos(x)^2
+          stack = [
+              ["var", "x"],
+              ["op", "sin"],
+              ["num", "2"],
+              ["op", "pow"],
+              ["var", "x"],
+              ["op", "cos"],
+              ["num", "2"],
+              ["op", "pow"],
+              ["op", "add"]
+          ];
+          show_stack();
+          compute_result();
+      }
+
+      function example_2() {
+          // sin(0.3 theta) * cot(0.3 theta)
+          stack = [
+              ["var", "theta"],
+              ["num", "0.3"],
+              ["op", "mul"],
+              ["op", "sin"],
+              ["var", "theta"],
+              ["num", "0.3"],
+              ["op", "mul"],
+              ["op", "cot"],
+              ["op", "mul"],
+          ];
+          show_stack();
+          compute_result();
+      }
+      
+      function example_3() {
+          // sin(x)*cos(y) + sin(y)*cos(x)
+          stack = [
+              ["var", "x"],
+              ["op", "sin"],
+              ["var", "y"],
+              ["op", "cos"],
+              ["op", "mul"],
+              ["var", "y"],
+              ["op", "sin"],
+              ["var", "x"],
+              ["op", "cos"],
+              ["op", "mul"],
+              ["op", "add"],
+          ];
+          show_stack();
+          compute_result();
+      }
+    </script>
+  </body>  
+
+</html>
