@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+    <div class="container py-3">
+        <a class="navbar-brand" href="/">
+        <svg class="logo mx-3" style="fill: #1572E8!important;width: 98px;height: 24px;" >
+            <use xlink:href="{{qcms:Logo}}#layer"/>
+        </svg>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">网站首页<span class="sr-only">(current)</span></a>
+                </li>
+                {{menu PCateId='0'}}
+                {{if '{{qcms:Menu_HasSub}}' == '1'}}
+                <li class="nav-item dropdown active">
+                    <a class="nav-link" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false" href="{{qcms:Menu_Url}}">{{qcms:Menu_Name}} <i class="bi bi-chevron-down"></i></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {{smenu PCateId='{{qcms:Menu_CateId}}'}}
+                        <a class="dropdown-item" href="{{qcms:sMenu_Url}}">{{qcms:sMenu_Name}} </a>
+                        {{/smenu}}
+                    </div>
+                </li>
+                {{else}}
+                <li class="nav-item active">
+                    <a class="nav-link"  href="{{qcms:Menu_Url}}">{{qcms:Menu_Name}}</a>
+                </li>
+                {{/if}}
+                {{/menu}}
+
+            </ul>
+            <form method="get" action="/index/search.html" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" name="Search" type="search" placeholder="请输入搜索关键字">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">搜索</button>
+            </form>
+        </div>
+    </div>
+</nav>

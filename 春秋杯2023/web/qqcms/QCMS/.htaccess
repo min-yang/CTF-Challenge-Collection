@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond $1 !^(index\.php|Static|robots\.txt|favicon\.ico|uc)
+RewriteRule ^(.*)$ /index.php [L]
+</IfModule>

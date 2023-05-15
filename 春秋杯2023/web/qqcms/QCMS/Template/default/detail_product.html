@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <title>{{qcms:Detail_Title}} —— {{qcms:WebName}}</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{{qcms:Detail_Keywords}}" />
+    <meta name="description" content="{{qcms:Detail_Description}}" />
+
+</head>
+{{include filename='component_meta.html'}}
+<body>
+    {{include filename='component_header.html'}}
+    <div class="mb-40 CateBannerPic" >
+        <div style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url({{qcms:Cate_Pic}}); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;"></div>
+    </div>
+    <div class="container text-dark mb-40">
+        <div class="row">
+            <div class="col-12 col-md-9 mb-40 mb-md-0" >
+                <div class="bg-white p-4">
+                    <div class="border-bottom pb-4 mb-4 row">
+                        <div class="col-12 col-md-5 mb-3 mb-md-0">
+                            <img src="{{qcms:Detail_Pic}}" class="d-block" style="width: 380px; max-width: 100%;">
+                        </div>
+                        <div class="col-12 col-md-7 d-flex align-items-start flex-column text-secondary">
+                            <h1 class="" style="line-height: unset;">{{qcms:Detail_Title}}</h1>
+                            <div class="row">
+                            <div class="col-12 col-md-6">厂商：<span class="text-dark ">{{qcms:Detail_factory}}</span></div>
+                            <div class="col-12 col-md-6">级别：<span class="text-dark ">{{qcms:Detail_level}}</span></div>
+                            <div class="col-12 col-md-6">能源类型：<span class="text-dark ">{{qcms:Detail_energy}}</span></div>
+                            <div class="col-12 col-md-6">环保标准：<span class="text-dark ">{{qcms:Detail_environment}}</span></div>
+                            <div class="col-12 col-md-6">上市时间：<span class="text-dark ">{{qcms:Detail_marketTime}}</span></div>
+                            <div class="col-12 col-md-6">最大功率(kW)：<span class="text-dark">{{qcms:Detail_maxpower}}</span></div>
+                            <div class="col-12 col-md-6">最大扭矩(N·m)：<span class="text-dark">{{qcms:Detail_maxtorque}}</span></div>
+                            <div class="col-12 col-md-6">发动机：<span class="text-dark">{{qcms:Detail_engine}}</span></div>
+                            <div class="col-12 col-md-6">变速箱：<span class="text-dark">{{qcms:Detail_transmission}}</span></div>
+                            <div class="col-12 col-md-6">长*宽*高(mm)：<span class="text-dark">{{qcms:Detail_size}}</span></div>
+                            </div>
+                            <button class="btn btn-danger mt-2 mt-md-auto">立即咨询</button>
+                        </div>
+                    </div>
+                    <div class="Content">
+                        {{qcms:Detail_Content}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3" >
+                <div class="bg-white">
+                    <div class="bg-white px-4 pt-3 pb-2">
+                        <div class="font-weight-bold mb-2">热门商品</div>
+                        {{list Model='product' Row='5'}}
+                        <div class="mb-3">
+                            <a href="{{qcms:List_Url}}">
+                            <img class="w-100 mb-2 d-block" src="{{qcms:List_Pic}}">
+                            <div class="text-black ">{{qcms:List_Title}}</div>
+                            <p class="text-danger"><span class="mr-2">{{qcms:List_Price}} 万元</span><!----><del class="text-muted"><span class="num">{{qcms:List_Price}} 万元</span></del></p>
+                            </a>
+                        </div>
+                        {{/list}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{include filename='component_footer.html'}}
+</body>
+{{include filename='component_js.html'}}
+</html>

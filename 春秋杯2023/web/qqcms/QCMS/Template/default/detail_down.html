@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <title>{{qcms:Detail_Title}} —— {{qcms:WebName}}</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{{qcms:Detail_Keywords}}" />
+    <meta name="description" content="{{qcms:Detail_Description}}" />
+
+</head>
+{{include filename='component_meta.html'}}
+<body>
+    {{include filename='component_header.html'}}
+    <div class="mb-40 CateBannerPic" >
+        <div style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url({{qcms:Cate_Pic}}); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;"></div>
+    </div>
+    <div class="container text-dark mb-40">
+        <div class="row">
+            <div class="col-12 col-md-8 mb-40 mb-md-0" >
+                <div class="bg-white p-4">
+                    <div class=" mb-4">
+                        <div class="text-secondary">
+                            <div class="d-flex flex-row border-bottom pb-2 mb-3">
+                                <div class="mr-3">
+                                    <img src="{{qcms:Detail_Pic}}" style="width: 60px;height: 60px;"/>
+                                </div>
+                                <div>
+                                    <h1 class="" style="line-height: unset;">{{qcms:Detail_Title}}</h1>
+                                    <div class="text-secondary">来源 <span class="text-black mr-2">{{qcms:Detail_Source}}</span> 作者 <span class="text-black mr-2">{{qcms:Detail_Author}}</span> 日期 <span class="text-black mr-2">{{date format='Y-m-d' time='{{qcms:Detail_TsAdd}}'}}</span> 浏览数 <span class="text-black mr-2">{{qcms:Detail_ReadNum}}</span></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <p>软件大小：<span class="text-dark ">{{qcms:Detail_Size}}</span></p>
+                                    <p>软件语言：<span class="text-dark ">{{qcms:Detail_Lang}}</span></p>
+                                    <p>应用平台：<span class="text-dark">{{qcms:Detail_Platform}}</span></p>
+
+                                    <p>软件授权：<span class="text-dark ">{{qcms:Detail_Auth}}</span></p>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <p>软件评级：<span class="text-dark ">{{qcms:Detail_Level}} 星级</span></p>
+                                    <p>软件厂商：<span class="text-dark">{{qcms:Detail_Company}}</span></p>
+                                    <p>官方网站：<span class="text-dark">{{qcms:Detail_WebSite}}</span></p>
+                                    <p>更新时间：<span class="text-dark">{{date format='Y-m-d' time='{{qcms:Detail_TsUpdate}}'}}</span></p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="border-bottom mb-2"><button class="btn btn-sm btn-default disabled">产品介绍</button></div>
+                    <div class="Content">
+                        {{qcms:Detail_Content}}
+                    </div>
+                    <a class="btn btn-primary my-3" href="{{qcms:Detail_DownAddress}}" target="_blank"><i class="bi bi-arrow-down mr-1"></i>立即下载</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4" >
+                <div class="bg-white">
+                    <div class="bg-white px-4 pt-3 pb-2">
+                        <div class="font-weight-bold mb-2">下载排行</div>
+                        {{list Model='down' Row='10'}}
+                            <div class="mb-3 overflow-hidden">
+                            <a class="d-flex align-items-center" href="{{qcms:List_Url}}">
+                            <div class="mr-3"><img class="d-block" src="{{qcms:List_Pic}}" style="width:40px; height: 40px;"></div>
+                            <div>
+                                <div class="text-nowrap" style="font-size:1.1rem;">{{qcms:List_Title}}</div>
+                                <div class="text-secondary">{{qcms:List_STitle}}</div>
+                            </div>
+                            </a>
+                            </div>
+                            {{/list}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{include filename='component_footer.html'}}
+</body>
+{{include filename='component_js.html'}}
+</html>

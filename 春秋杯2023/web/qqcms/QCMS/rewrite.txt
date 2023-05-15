@@ -1,0 +1,12 @@
+Nginx 路径重定向说明：
+if (!-e $request_filename) {
+	rewrite  ^(.*)$  /index.php?s=$1  last;
+	break;
+}
+
+Apache 路径重定向说明：
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteCond $1 !^(index\.php|Static|robots\.txt|favicon\.ico|uc)
+	RewriteRule ^(.*)$ /index.php [L]
+</IfModule>

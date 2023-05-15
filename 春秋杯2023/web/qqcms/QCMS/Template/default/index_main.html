@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <title>{{qcms:WebName}}</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="QCMS" />
+    <meta name="description" content="QCMS" />
+
+</head>
+{{include filename='component_meta.html'}}
+<body>
+    {{include filename='component_header.html'}}
+    <div class=" mb-40">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                {{slide SwiperCateId='1'}}
+                <a href="{{qcms:Slide_Link}}" class="swiper-slide swiperBanner" >
+                <div class="" style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url({{qcms:Slide_Pic}}); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit;">
+                </div>
+                </a>
+                {{/slide}}
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center  mb-3">
+        <div class=" h3 text-black font-weight-bold">产品中心</div>
+        <p class="text-secondary" >产品中心所有产品都是演示数据，非真实销售数据</p>
+    </div >
+    <div class="container mb-40">
+        <div class="row text-center">
+            {{list Model='product' Row='8'}}
+            <div class="col-6 col-md-3 p-2">
+                <a href="{{qcms:List_Url}}">
+                <div class="bg-white p-2">
+                <img class="w-100 mb-3 d-block" src="{{qcms:List_Pic}}">
+                <div class="text-black font-weight-bold">{{qcms:List_Title}}</div>
+                <div class="mb-1 text-secondary">{{qcms:List_STitle}}</div>
+                <p class="text-danger"><span class="mr-2">{{qcms:List_Price}} 万元</span><!----><del class="text-muted"><span class="num">{{qcms:List_Price}} 万元</span></del></p>
+                </div>
+                </a>
+            </div>
+            {{/list}}
+        </div>
+    </div>
+
+    <div class="container mb-40 px-2">
+        <div class="row">
+            <div class="col-12 col-md-8" >
+
+                    <div class="h5 text-black py-2 font-weight-bold">新闻动态</div>
+                    <div class="bg-white py-2" >
+                        {{list Model='article' Row='5'}}
+                        <div class="p-4 border-bottom d-md-flex">
+
+                            <div class="mb-2 mb-md-1 mr-md-3"><a href="{{qcms:List_Url}}"><img class="d-block indexNewsImg" src="{{qcms:List_Pic}}" ></a></div>
+                            <div class="d-flex align-items-start flex-column">
+                                <a href="{{qcms:List_Url}}">
+                                <div class="font-weight-bold " style="font-size: 1.2rem;">{{qcms:List_Title}}</div>
+                                <div class="text-secondary">{{qcms:List_Summary}}</div>
+                                </a>
+                                <div class="mt-auto">
+                                    {{qcms:List_Tag}}
+                                    <span class="text-secondary">{{Date format='special' time='{{qcms:List_TsUpdate}}'}}</span>
+                                    </div>
+                            </div>
+
+                        </div>
+                        {{/list}}
+                    </div>
+            </div>
+            <div class="col-12 col-md-4" >
+
+                    <div class="h5 text-black py-2 font-weight-bold">下载中心</div>
+                    <div  class="bg-white" >
+                        <div class="px-4 pt-4 pb-1">
+                            {{list Model='down' Row='10'}}
+                            <div class="mb-3 overflow-hidden">
+                            <a class="d-flex align-items-center" href="{{qcms:List_Url}}">
+                            <div class="mr-3"><img class="d-block" src="{{qcms:List_Pic}}" style="width:40px; height: 40px;"></div>
+                            <div>
+                                <div class="text-nowrap" style="font-size:1.1rem;">{{qcms:List_Title}}</div>
+                                <div class="text-secondary">{{qcms:List_STitle}}</div>
+                            </div>
+                            </a>
+                            </div>
+                            {{/list}}
+
+                        </div>
+
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3 text-center ">
+        <div class=" h3 text-black font-weight-bold">相册展示</div>
+        <p class="text-secondary" >无线降噪无线降噪无线降噪无线降噪无线降噪</p>
+    </div >
+    <div class="container mb-4">
+        <div class="row ">
+            {{list Model='album' Row='6'}}
+            <div class="col-6 col-md-4 p-2">
+                <a href="{{qcms:List_Url}}">
+                <img class="img-thumbnail w-100 d-block" src="{{qcms:List_Pic}}">
+                </a>
+            </div>
+            {{/list}}
+
+        </div>
+    </div>
+
+    <div class="container px-2 mb-40" >
+        <div class="bg-white">
+            <div class="font-weight-bold border-bottom px-3 py-2" style="font-size: 1.2rem;">友情链接</div>
+            <div class="p-3 bg-white">
+            {{link}}
+            <a class="mr-3 mb-2 inline-block" target="_blank" href="{{qcms:Link_Link}}">{{qcms:Link_Name}}</a>
+            {{/link}}
+            </div>
+        </div>
+    </div>
+{{include filename='component_footer.html'}}
+</body>
+{{include filename='component_js.html'}}
+</html>

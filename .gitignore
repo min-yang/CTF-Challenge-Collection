@@ -7,5 +7,6 @@ core
 *.i64
 *.idb
 *.vhdx
+Static
 
 localdir

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <title>{{qcms:FormName}} —— {{qcms:WebName}}</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{{qcms:Cate_Keywords}}" />
+    <meta name="description" content="{{qcms:Cate_Description}}" />
+
+</head>
+{{include filename='component_meta.html'}}
+<body>
+    {{include filename='component_header.html'}}
+
+    <div class="container text-dark bg-white p-4 mt-40 mb-40 Page">
+        <h1 class="px-3">{{qcms:FormName}}</h1>
+        <form method="post" action="http://q6.demo.com/index/form/form1.html"><div class="form-group col-12  col-lg-12">
+        <label for="Input_Name" class=" mb-1">名字</label><span class="text-danger ml-2" style="font-weight: 900;">*</span>
+        <input type="text"  class="form-control " name="Name" id="Input_Name" placeholder="请输入名字" value="" required="required">
+</div>
+<div class="form-group col-12  col-lg-12">
+        <label for="Input_Phone" class=" mb-1">电话</label><span class="text-danger ml-2" style="font-weight: 900;">*</span>
+        <input type="text"  class="form-control " name="Phone" id="Input_Phone" placeholder="请输入电话" value="" required="required">
+</div>
+<div class="form-group col-12  col-lg-12">
+                        <label for="Input_Message" class="mb-1">留言</label><span class="text-danger ml-2" style="font-weight: 900;">*</span>
+                        <textarea class="form-control" name="Message"  rows="6" id="Input_Message" placeholder="请输入留言" required="required"></textarea>
+                      </div>
+<div class="form-group col-12  col-lg-12"><button type="submit" class="btn btn-primary " id="Button_">提交</button></div></form>
+    </div>
+
+    {{include filename='component_footer.html'}}
+</body>
+{{include filename='component_js.html'}}
+</html>

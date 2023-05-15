@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <title>{{qcms:Page_Name}} —— {{qcms:WebName}}</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{{qcms:Cate_Keywords}}" />
+    <meta name="description" content="{{qcms:Cate_Description}}" />
+
+</head>
+{{include filename='component_meta.html'}}
+<body>
+    {{include filename='component_header.html'}}
+    <div class="mb-40 CateBannerPic" >
+        <div style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url({{qcms:Page_Pic}}); background-size: cover; background-position: center bottom; width: 100%; height: 100%; opacity: 1; visibility: inherit;"></div>
+    </div>
+    <div class="container text-dark bg-white p-4 mb-40 Page">
+        <h1 class="">{{qcms:Page_Name}}</h1>
+        <div class="Content">{{qcms:Page_Content}} </div>
+    </div>
+
+    {{include filename='component_footer.html'}}
+</body>
+{{include filename='component_js.html'}}
+</html>

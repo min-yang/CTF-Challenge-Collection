@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <title>{{if '{{qcms:Search}}'!=''}}{{qcms:Search}} —— {{/if}}网站搜索</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="{{qcms:Search}}" />
+    <meta name="description" content="{{qcms:Search}}" />
+
+</head>
+{{include filename='component_meta.html'}}
+<body>
+    {{include filename='component_header.html'}}
+
+    <div class="container text-dark bg-white p-5 mt-40 mb-40 Page">
+        <form method="get">
+        <div class="input-group ">
+          <input type="text" name="Search" class="form-control" value="{{qcms:Search}}" placeholder="请输入关键字">
+          <div class="input-group-append">
+            <button class="btn btn-primary" id="basic-addon2">立即搜索</button>
+          </div>
+        </div>
+        </form>
+        {{if '{{qcms:Search}}'!=''}}
+        <h5 class="font-weight-bold mt-4 ">搜索词：{{qcms:Search}}</h5>
+        {{list Model='article' Row='10' Search='{{qcms:Search}}' IsPage='1'}}
+                        <div class="py-4 border-bottom d-flex">
+
+                            <div class="mr-3"><a class="" href="{{qcms:List_Url}}"><img class="d-block border" src="{{qcms:List_Pic}}" style="width:120px;"></a></div>
+                            <div class="d-flex align-items-start flex-column">
+                                <a class="" href="{{qcms:List_Url}}">
+                                <div class="font-weight-bold mb-1" style="font-size: 1.2rem;">{{qcms:List_Title}}</div>
+                                <div class="text-secondary mb-1">{{qcms:List_Summary}}</div>
+                                </a>
+                                <div class="mt-auto">
+                                    {{qcms:List_Tag}}
+                                    <span class="text-secondary">{{Date format='special' time='{{qcms:List_TsUpdate}}'}}</span>
+                                    </div>
+                            </div>
+
+                        </div>
+                        {{/list}}
+                        {{qcms:List_PageBar}}
+        {{/if}}
+    </div>
+
+    {{include filename='component_footer.html'}}
+</body>
+{{include filename='component_js.html'}}
+</html>
