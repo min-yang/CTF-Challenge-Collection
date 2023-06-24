@@ -1,0 +1,9 @@
+Servers:
+
+ams-1.rpg.jctf.pro
+sgp-1.rpg.jctf.pro
+nyc-1.rpg.jctf.pro
+
+Hints for part 1: The server is running with the same config files as the client (config.json is shared). Debug interface is disabled and can't be enabled (it was used for automated tests of the server made prior to the CTF). There is a RPC packet filter based on a JSON schema, schema is in share/net/rpc_schema.ts in the client package. This filter is intended to ruin any hopes of finding typical JS vulnerabilities such as prototype pollution or type confusion, since this task isn't about them. You are not supposed to try to find bugs in code you have no access to, this includes packet filtering or game saving. You also do not need to crash the game/server. The first challenge is rather unique to this game's architecture and the graphics themselves may or may not contain a hint. The second challenge is arguably easier, so don't get demotivated over the first one. I don't think this one is very relevant, but you can ensure your client is synched up with the server by simply reconnecting.
+
+Hint for part 2: Here is the collision view for the second part of this challenge. It might be helpful to align up your position in this challenge.

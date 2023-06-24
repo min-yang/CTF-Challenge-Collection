@@ -1,0 +1,7 @@
+Hint 1: It's a race and there are multiple laps.
+
+Hint 2: Look for odd laps, they have an extra bit of information
+
+Hint 3: Car racing these days is big on statistics.
+
+Hint 4: The file was generated in Python, it might be easiest to also parse it in Python
