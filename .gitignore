@@ -8,5 +8,12 @@ core
 *.idb
 *.vhdx
 Static
+bzImage
+rootfs.img*
+vmlinux*
+d8
+bin
+runsc
 
 localdir
+TOTALLY NOT BRUTE FORCE
